@@ -38,9 +38,8 @@ import java.net.URI;
 
 public class MainActivity extends Activity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
-    int numero22=9999;
-    int numero11=9999;
-    int numero3=9999;
+    int numero1=99999;
+    int numero2=9999;
 
     private static final String TAG = MainActivity.class.getSimpleName();
     static final int PHOTO_REQUEST_CODE = 1;
@@ -163,6 +162,9 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
      * @param path - name of directory with .traineddata files
      */
     private void copyTessDataFiles(String path) {
+
+        System.out.println("------------->111111:"+path);
+
         try {
             String fileList[] = getAssets().list(path);
 
@@ -208,8 +210,10 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
             options.inSampleSize = 5; // 1 - means max size. 4 - means maxsize/4 size. Don't use value <4, because you need more memory in the heap to store your data.
             Bitmap bitmap = BitmapFactory.decodeFile(imgUri.getPath(), options);
 
-            result = extractText(bitmap);
             imagen_original.setImageBitmap(bitmap);
+
+            result = extractText(rotarImagen(bitmap, imgUri));
+
             textView.setText(result + "\n" + outputFileUri + "\n" + DATA_PATH + "\n" + TESSDATA);
 
         } catch (Exception e) {
@@ -243,6 +247,7 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
                 mtx.postRotate(rotate);
                 // Rotating Bitmap
                 bitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, mtx, true);
+
             }
         } catch (Exception e) {
             System.out.println("------------------------>Error en rotarImagen:" + e.getMessage());
