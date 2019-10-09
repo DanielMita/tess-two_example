@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin"
+    tools:context="com.ashomok.tesseractsample.MainActivity">
+
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Captura una foto con texto en español"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/action_btn"
+        android:text="Capturar"
+        android:layout_below="@+id/instruction">
+    </Button>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/action_btn">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resultado del OCR"/>
+
+                <ImageView
+                    android:id="@+id/imagen_original"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp" />
+
+                <ImageView
+                    android:id="@+id/imagen_tess"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    tools:ignore="DuplicateIds" />
+                
+                <ImageView
+                    android:id="@+id/imagen_volteada"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</RelativeLayout>
